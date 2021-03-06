@@ -1,0 +1,54 @@
+[
+    {
+      "id": 2,
+      "brwUserId": 1,
+      "titre": "Computers Rubber portals Shilling Buckinghamshire",
+      "description": "eaque suscipit porro ipsam ut corrupti quia voluptatem sed tenetur omnis omnis non iste maiores et perferendis commodi ut dolores",
+      "images": [
+        "http://placeimg.com/640/480/technics",
+        "http://placeimg.com/640/480/technics",
+        "http://placeimg.com/640/480/technics"
+      ],
+      "status": [
+        "moyen",
+        "bien usée"
+      ],
+      "bookingEnabled": true
+    },
+    {
+      "id": 3,
+      "brwUserId": 2,
+      "titre": "a Bedfordshire Baby a recontextualize",
+      "description": "quisquam nam sit provident qui ut quia adipisci est inventore natus a illo fugiat occaecati quisquam ut tenetur rerum autem",
+      "images": [
+        "http://placeimg.com/640/480/business",
+        "http://placeimg.com/640/480/business",
+        "http://placeimg.com/640/480/business",
+        "http://placeimg.com/640/480/business",
+        "http://placeimg.com/640/480/business"
+      ],
+      "status": [
+        "moyen",
+        "bien usée"
+      ],
+      "bookingEnabled": true
+    },
+    {
+      "id": 5,
+      "brwUserId": 3,
+      "titre": "Intuitive Checking SQL UIC-Franc la",
+      "description": "et molestiae laboriosam vitae inventore nam id aperiam ab ipsa voluptatem iure praesentium non aut quia in est eum et",
+      "images": [
+        "http://placeimg.com/640/480/fashion",
+        "http://placeimg.com/640/480/fashion",
+        "http://placeimg.com/640/480/fashion",
+        "http://placeimg.com/640/480/fashion"
+      ],
+      "status": [
+        "neuf",
+        "moyen",
+        "bien usée"
+      ],
+      "bookingEnabled": true
+    }
+  ]

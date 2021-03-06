@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FilterPipe } from '../pipe/filter.pipe';
+
 
 @Component({
   selector: 'app-header',
@@ -7,6 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  title = 'angular-text-search-highlight';
+  searchText = '';
+  characters = [
+    'Ant-Man',
+    'Aquaman',
+    'Asterix',
+    'The Atom',
+    'The Avengers',
+    'Batgirl',
+    'Batman',
+    'Batwoman'
+  ]
 
   constructor(private router: Router) { }
 

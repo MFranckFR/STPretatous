@@ -1,0 +1,36 @@
+
+<div class="container">
+    <br><br><br><br><br>
+
+<form class="text-center border border-light p-5" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <p class="h4 mb-4">Contacter-nous</p>
+  
+    <input type="text" formControlName="contactFormName" id="defaultContactFormName" mdbInput
+      class="form-control mb-4 rounded-pill" placeholder="Votre nom">
+  
+    <input type="email" formControlName="contactFormEmail" id="defaultContactFormEmail" mdbInput
+      class="form-control mb-4 rounded-pill" placeholder="Votre e-mail">
+  
+    <label>Sujet</label>
+    <select formControlName="contactFormSubjects" class="browser-default custom-select mb-4 rounded-pill">
+      <option value="" disabled>Choisissez une option</option>
+      <option value="1" selected>Demande de renseignement</option>
+      <option value="2">Nous faire part d'un problème</option>
+    </select>
+  
+    
+    <div class="form-group">
+      <textarea formControlName="contactFormMessage" class="form-control rounded-" mdbInput id="exampleFormControlTextarea2"
+        rows="3" placeholder="Votre message"></textarea>
+    </div>
+  
+    <button mdbBtn color="info" class="z-depth-0 my-4 waves-effect rounded-pill"
+      mdbWavesEffect type="submit" (clic)="onSubmit()" >Envoyer</button>
+
+    <button mdbBtn color="info" class="z-depth-0 my-4 waves-effect rounded-pill"
+      mdbWavesEffect type="reset" (click)="onReset()" [disabled]="disabledSubmitButton" >Annuler</button>
+  </form>
+  
+</div>
+

@@ -1,0 +1,45 @@
+<div class="container custom-container-2">
+
+    <!-- Si aucun compte n'est présent -->
+    <div class="no-data text-center" *ngIf="userAccount.length == 0">
+      <p>Aucun compte utilisateur pour le moment!</p>
+      <button class="btn btn-outline-primary" routerLink="/user/user-add">Ajouter des comptes utilisateurs</button>
+    </div>
+  
+    <!-- Liste des comptes utilisateurs -->
+    <div *ngIf="userAccount.length !== 0">
+      <h3 class="mb-3 text-center">Liste des comptes utilisateurs</h3>
+  
+      <div class="col-md-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">User Id</th>
+              <th scope="col">Pseudo</th>
+              <th scope="col">Nom</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userAccount">
+              <td>{{user.id}}</td>
+              <td>{{user.pseudo}}</td>
+              <td>{{user.lastName}}</td>
+              <td>
+                <button class="btn btn-outline-success rounded-pill" routerLink="/user/user-edit/{{user.id}}">Editer</button>
+                <!-- <span class="edit" routerLink="/user-edit/{{user.id}}">Editer</span> -->
+                <!-- <span class="delete" (click)="deleteUserAccount(user.id)">Supprimer</span> -->
+                <button class="btn btn-outline-danger rounded-pill" (click)="deleteUserAccount(user.id)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+
+
+ 

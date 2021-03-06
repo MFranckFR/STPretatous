@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PretatousService } from 'src/app/service/pretatous.service';
+import { Product } from 'src/app/shared/product';
 
 @Component({
   selector: 'app-product-view',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductViewComponent implements OnInit {
 
-  constructor() { }
+  id!: number;
+  product!: Product;
+
+  constructor(private route: ActivatedRoute,private router: Router, private pretatousService: PretatousService) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+      
+    this.pretatousService.getProduct(this.id)
+      .subscribe(data => {
+        console.log(data)
+        this.product = data;
+      });
   }
 
 }

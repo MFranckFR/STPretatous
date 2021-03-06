@@ -1,1 +1,88 @@
-<p>product-list works!</p>
+<!-- <img src="https://picsum.photos/seed/picsum/100/100?random=2" alt=""> -->
+
+<div class="container custom-container-2">
+
+    <!-- Si aucun compte n'est présent -->
+    <div class="no-data text-center" *ngIf="productList.length == 0">
+      <p>Aucune fiche produit</p>
+      <button class="btn btn-outline-primary" routerLink="/product/product-add">Ajouter une fiche produit</button>
+    </div>
+  
+    <!-- Liste des produits -->
+    <!-- <div *ngIf="productList.length !== 0">
+      <h3 class="mb-3 text-center">Liste des produits</h3>
+  
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">titre</th>
+              <th scope="col">description</th>
+              <th scope="col">image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productList">
+              <td>{{product.id}}</td>
+              <td>{{product.titre}}</td>
+              <td>{{product.description}}</td>
+              <td><img [src]="product.images" alt="product.description" width="50%" heigth="50%"></td>
+              <td>
+                <span><button class="btn btn-outline-success rounded-pill" routerLink="/product/product-edit/{{product.id}}">Editer</button></span>
+                <span><button class="btn btn-outline-danger rounded-pill" (click)="deleteProduct(product.id)">Supprimer</button></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+
+      <!-- Modif test -->
+      <div *ngIf="productList.length !== 0">
+        <h3 class="mb-3 text-center">Liste des produits</h3>
+    
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">image</th>
+                <!-- <th scope="col">Id</th> -->
+                <th scope="col">titre</th>
+                <th scope="col">description</th>
+                <th scope="col">status</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of productList">
+                <td><img [src]="product.images" alt="product.description" width="50%" heigth="50%"></td>
+                <!-- <td>{{product.id}}</td> -->
+                <td>{{product.titre}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.status}}</td>
+                <td><button class="btn btn-outline-success rounded-pill" routerLink="/product/product-edit/{{product.id}}">Editer</button></td>
+                <td><button class="btn btn-outline-danger rounded-pill" (click)="deleteProduct(product.id)">Supprimer</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+      <!-- <p>
+        Pas d'inspiration, pas de problème !
+      </p>
+      
+      <button type="button" (click)="getImageFromService()">Inspirez-moi !!</button>
+      
+      <img [src]="imageToShow"
+           
+           *ngIf="!isImageLoading; else noImageFound">
+      <ng-template #noImageFound>
+           <img src="fallbackImage.png" alt="Fallbackimage">
+      </ng-template> -->
+  
+    </div>
+  
+  </div>

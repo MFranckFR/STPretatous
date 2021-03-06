@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3 style="text-align: center">Formulaire d'inscription</h3>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="pseudo">Pseudo:</label>
+          <input
+            class="form-control rounded-pill"
+            type="text"
+            placeholder="Entrer votre pseudo"
+            name="pseudo"
+            formControlName="pseudo"
+          />
+          <!-- [ngClass]="{ 'is-invalid': submitted && f.pseudo.errors }" -->
+        </div>
+
+        <!-- <div *ngIf="submitted && f.pseudo.errors" class="invalid-feedback">
+          <div *ngIf="f.pseudo.errors.required">First Name is required</div>
+        </div>
+        <div
+          *ngIf="f.pseudo.invalid && (f.pseudo.dirty || f.pseudo.touched)"
+          class="alert alert-danger">
+          <div *ngIf="f.pseudo.errors?.required || f.pseudo.errors?.erreur">Le pseudo est obligatoire</div>
+          <div *ngIf="f.pseudo.errors?.erreur">Premiere lettre en majuscule</div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="nom">Nom:</label>
+          <input
+          class="form-control rounded-pill"
+            type="text"
+            placeholder="Entrer votre nom"
+            name="nom"
+            formControlName="firstName"
+          />
+          <!-- [ngClass]="{ 'is-invalid': submitted && f.pseudo.errors }" -->
+        </div>
+        <!-- <div
+          *ngIf="f.nom.invalid && (f.nom.dirty || f.nom.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.nom.errors?.required">Le nom est obligatoire</div>
+          <div *ngIf="f.nom.errors?.erreur">Premiere lettre en majuscule</div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="prenom">Prenom:</label>
+          <input
+          class="form-control rounded-pill"
+            type="text"
+            placeholder="Entrer votre prénom"
+            name="prenom"
+            formControlName="lastName"
+          />
+        </div>
+        <!-- <div
+          *ngIf="f.prenom.invalid && (f.prenom.dirty || f.prenom.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f.prenom.errors?.required">Le prenom est obligatoire</div>
+          <div *ngIf="f.prenom.errors?.erreur">
+            Premiere lettre en majuscule
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              ><i class="fa fa-envelope" aria-hidden="true"></i
+            ></span>
+            <input
+              required
+              class="form-control rounded-pill"
+              type="text"
+              placeholder="Entrer votre E-mail"
+              name="email"
+              formControlName="email"
+            />
+          </div>
+        </div>
+
+        <!-- <div
+          *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+          class="alert alert-danger">
+          <div *ngIf="f.email.errors?.required">L'email est obligatoire</div>
+          <div *ngIf="f.email.errors?.erreur">Vous devez entrer une adresse email valide</div>
+        </div> -->
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Mot de passe</label>
+            <div>
+              <div class="input-group-append">
+                <input
+                  [type]="fieldTextType ? 'text' : 'password'"
+                  formControlName="password"
+                  class="form-control rounded-pill"
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                />
+                <span class="input-group-text">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()"
+                  ></i>
+                </span>
+              </div>
+              <div
+                *ngIf="submitted && f.password.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.password.errors.required">
+                  Le mot de passe est requis
+                </div>
+                <div *ngIf="f.password.errors">
+                  Le mot de Passe doit contenir 6 caractères minimum
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col">
+            <label>Confirmer votre mot de passe</label>
+            <div>
+              <div class="input-group-append">
+                <input
+                  [type]="fieldTextType ? 'text' : 'password'"
+                  formControlName="confirmPassword"
+                  class="form-control rounded-pill"
+                  [ngClass]="{
+                    'is-invalid': submitted && f.confirmPassword.errors
+                  }"
+                />
+                <span class="input-group-text">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()"
+                  ></i>
+                </span>
+              </div>
+              <div
+                *ngIf="submitted && f.confirmPassword.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.confirmPassword.errors.required">
+                  La confirmation de votre mot de passe est requise
+                </div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">
+                  Les mots de passe doivent être identiques
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formGroup">
+          <h3>Adresse</h3>
+          <div class="form-group">
+            <label for="rue">Adresse</label>
+            <input class="form-control rounded-pill" type="text" formControlName="address" />
+          </div>
+          <div class="form-group">
+            <label for="rue">Complément d'adresse</label>
+            <input
+            class="form-control rounded-pill"
+              type="text"
+              formControlName="addressAdd"
+            />
+          </div>
+          <div class="form-group">
+            <label for="codePostal">Code postal :</label>
+            <input class="form-control rounded-pill" type="text" formControlName="zipCode" />
+          </div>
+          <div class="form-group">
+            <label for="ville">Ville:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="city" />
+          </div>
+          <div class="form-group">
+            <label for="pays">Pays:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="country" />
+          </div>
+          <div class="form-group">
+            <label for="téléphone">Téléphone:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="phone" />
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="mobile" />
+          </div>
+        </div>
+
+        <!-- <div class="form-group form-check">
+          <input
+            type="checkbox"
+            formControlName="acceptTerms"
+            id="acceptTerms"
+            class="form-check-input"
+            [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
+          />
+          <label for="acceptTerms" class="form-check-label"
+            >Accepter les Termes & Conditions d'utilisation</label>
+          <div
+            *ngIf="submitted && f.acceptTerms.errors"
+            class="invalid-feedback">
+            Accept Ts & Cs is required
+          </div>
+        </div> -->
+
+        <div class="text-center">
+          <button
+            type="button"
+            class="btn btn-outline-success rounded-pill"
+            data-mdb-ripple-color="dark"
+            type="submit"
+            (clic)="onSubmit()"
+          >
+            Envoyer
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline-danger rounded-pill"
+            data-mdb-ripple-color="dark"
+            (click)="onReset()"
+            [disabled]="disabledSubmitButton"
+          >
+            Annuler
+          </button>
+          <br><br>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,46 @@
-<h1>Page d’authentification</h1>
+<!-- <br><br><br><br><br><br> -->
 
-<form (ngSubmit)="isAuthenticated()">
 
-    <div>
-        Nom d’utilisateur :
-        <input type=text [(ngModel)]=login name=login>
+<!-- <h1 style="text-align: center">Page d’authentification</h1> -->
+
+<div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5 ">
+            <div class="card-body">
+              <h5 class="card-title text-center">Se connecter</h5>
+              <form class="form-signin" (ngSubmit)="isAuthenticated()">
+                <div class="form-label-group">
+                  <input type="text" type=text [(ngModel)]=login name=login class="form-control rounded-pill" placeholder="Nom d'utilisateur" required autofocus>
+                  <!-- <label for="inputPseudo">Nom d'utilisateur</label> -->
+                  <br>
+
+                </div>
+  
+                <div class="form-label-group">
+                  <input type="password" type=text [(ngModel)]=password name=password class="form-control rounded-pill" placeholder="Mot de passe" required>
+                  <!-- <label for="inputPassword">Mot de passe</label> -->
+                  <br>
+                </div>
+  
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Se souvenir de mon mot de passe</label>
+                </div>
+                <button class="btn btn-outline-success rounded-pill btn-block text-uppercase" type="submit">Se connecter</button><br>
+                <div [hidden]='erreur'>Identifiants incorrects</div>
+                <hr class="my-4">
+                <button class="btn btn-outline-warning rounded-pill btn-block text-uppercase" routerLink="/user/user-add">S'inscrire</button>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div>
-        Mot de passe :
-        <input type=text [(ngModel)]=password name=password>
-        <button type=submit>Se connecter</button>
-    </div>
-    <div [hidden]='erreur'>Identifiants incorrects</div>
-</form>
+
  
 

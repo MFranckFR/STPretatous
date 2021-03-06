@@ -1,1 +1,15 @@
-<p>user-view works!</p>
+<div class="container-fluid">
+  <h2 style="text-align: center">User view</h2>
+  <hr />
+  <div *ngIf="user">
+    <div>
+      <label><b>id: </b></label> {{ user.id }}
+    </div>
+    <div>
+      <label><b>login: </b></label> {{ user.login }}
+    </div>
+    <div>
+      <label><b>password: </b></label> {{ user.password }}
+    </div>
+  </div>
+</div>

@@ -1,2 +1,40 @@
-<br><br><br><br><br><br>
-<p>product-edit works well!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <br>
+            <h2 style="text-align: center">Editer une fiche produit</h2>
+            <form (ngSubmit)="updateProduct()">
+                <!-- <div class="form-group" >
+                    Id: {{ product.id }}
+                </div> -->
+                <div>
+                    Titre :
+                    <input class="form-control rounded-pill" type="text" name="titre" [(ngModel)]="product.titre" required />
+                </div>
+                <div>
+                    Description :
+                    <input class="form-control rounded-pill" type="text" name="description" [(ngModel)]="product.description"
+                        required />
+                </div>
+                <div>
+                    Status :
+                    <input class="form-control rounded-pill" type="input" name="status" [(ngModel)]="product.status"
+                        />
+                </div>
+                <br>
+
+                <div >
+                    <ul class="productImg" *ngFor="let image of product.images; let i = index">
+                        <li>
+                            <img [src]="image" width="25%" heigth="25%" [title]="image"/>
+                            <label for="images">Img</label>
+                            <input type="text" name="image" [value]="image">
+                        </li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-outline-success rounded-pill"  type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

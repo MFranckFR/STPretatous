@@ -1,0 +1,9 @@
+ul.productImg li{
+    /* background-color: red; */
+    list-style-type: none;
+}
+
+ul.productImg img{
+    border: thick double #8691D3;
+
+}
