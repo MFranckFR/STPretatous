@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h3 style="text-align: center">Ajout d'une réservation</h3>
+
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="description">Product:</label>
+                    <input type="text" class="form-group rounded-pill" name="product" formControlName="product" />
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Prêteur:</label>
+                    <input type="text" class="form-group rounded-pill" name="owner" formControlName="owner" />
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Emprunteur:</label>
+                    <input type="text" class="form-group rounded-pill" name="loaner" formControlName="loaner" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Début de la réservation:</label>
+                    <input type="text" class="form-group rounded-pill" name="dtBkingStart" formControlName="dtBkingStart" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Fin de la réservation:</label>
+                    <input type="text" class="form-group rounded-pill" name="dtBkingEnd" formControlName="dtBkingEnd" />
+                </div>
+
+                <button class="btn btn-outline-success rounded-pill" type="submit" (clic)="onSubmit()">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,8 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { User } from '../interface/user';
 import { Account } from '../interface/account';
 import { Product } from '../interface/product';
+import { Booking } from '../interface/booking';
+
 
 
 
@@ -199,13 +201,15 @@ updateProduct(id: number, data: Product): Observable<any> {
   )
 }
 
-////////////////////////////////////PRODUCT IMAGE FETCH FROM API///////////////////:id', component:
-getImage(imageUrl: string): Observable<Blob> {
-  return this.http.get(imageUrl, { responseType: 'blob' });
+/////////////////////////////////GESTION DES RESERVATIONS///////////////
+
+createBookingRequest(bookingRequest: any): Observable<any> {
+  let url = `${this.url}/bookings`;
+  console.log('bookkingRequest', bookingRequest);
+  return this.http.post(url, 
+    JSON.stringify(bookingRequest),
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
 }
-
-
-
 
   ////////////////////////////////GESTION DES ERREURS//////////////////////
   handleError(error: any) {

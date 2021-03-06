@@ -20,6 +20,7 @@ import { ReturnModule } from './return/return.module';
 import { LenderComponent } from './components/lender/lender.component';
 import { BorrowerComponent } from './components/borrower/borrower.component';
 
+
 //Import des modules pour contact-form
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {HttpClientModule} from '@angular/common/http';
@@ -32,10 +33,15 @@ import { AuthComponent } from './auth/auth.component';
 import { SubscribeComponent } from './backup/subscribe/subscribe.component';
 import { AngularMaterialModule } from './angular-material.module';
 
-//Import du piupe pour la searchBar
+//Import du pipe pour la searchBar
 import { UploadImgComponent } from './upload-img/upload-img.component';
 import { FileUploadModule } from 'ng2-file-upload';
-import { BookingRequestModule } from './booking-request/booking-request.module';
+import { BookingAddComponent } from './booking-add/booking-add.component';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -53,6 +59,9 @@ import { BookingRequestModule } from './booking-request/booking-request.module';
     AuthComponent,
     SubscribeComponent,
     UploadImgComponent,
+    BookingAddComponent,
+ 
+  
   ],
 
   imports: [
@@ -63,6 +72,8 @@ import { BookingRequestModule } from './booking-request/booking-request.module';
     UserModule,
     ReturnModule,
     Ng2SearchPipeModule,
+    
+    
   
 
     //Module pour uploader les images sur le serveur
@@ -74,7 +85,9 @@ import { BookingRequestModule } from './booking-request/booking-request.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    BookingRequestModule,
+    
+    
+    
   ],
 
   providers: [],

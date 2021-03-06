@@ -13,6 +13,7 @@ import { PrivacyPolicyComponent } from './footerFiles/privacy-policy/privacy-pol
 import { SubscribeComponent } from './backup/subscribe/subscribe.component';
 import { TermsOfUseComponent } from './footerFiles/terms-of-use/terms-of-use.component';
 import { UploadImgComponent } from './upload-img/upload-img.component';
+import { BookingAddComponent } from './booking-add/booking-add.component';
 
 const routes: Routes = [
 
@@ -27,9 +28,11 @@ const routes: Routes = [
   { path: 'terms-of-use', component: TermsOfUseComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'photos', component: UploadImgComponent},
+  { path: 'booking', component: BookingAddComponent},
 
 
 //Lazing loading pour les modules "product" et "user"
+  
   { path: 'user', loadChildren: './user/user.module#UserModule'},
   { path: 'product', loadChildren: './product/product.module#ProductModule'},
   { path: '', pathMatch:'full', redirectTo: '/home'},
