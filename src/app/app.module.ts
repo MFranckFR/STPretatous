@@ -16,7 +16,6 @@ import { TermsOfUseComponent } from './footerFiles/terms-of-use/terms-of-use.com
 import { ContactFormComponent } from './footerFiles/contact-form/contact-form.component';
 import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
-import { ReturnModule } from './return/return.module';
 import { LenderComponent } from './components/lender/lender.component';
 import { BorrowerComponent } from './components/borrower/borrower.component';
 
@@ -36,7 +35,13 @@ import { AngularMaterialModule } from './angular-material.module';
 //Import du pipe pour la searchBar
 import { UploadImgComponent } from './upload-img/upload-img.component';
 import { FileUploadModule } from 'ng2-file-upload';
+
+
 import { BookingAddComponent } from './booking-add/booking-add.component';
+import { BookingComponent } from './booking/booking.component';
+import { LoanComponent } from './loan/loan.component';
+import { ReturnComponent } from './return/return.component';
+
 
 
 
@@ -60,6 +65,10 @@ import { BookingAddComponent } from './booking-add/booking-add.component';
     SubscribeComponent,
     UploadImgComponent,
     BookingAddComponent,
+    BookingComponent,
+    LoanComponent,
+    ReturnComponent,
+
  
   
   ],
@@ -70,7 +79,6 @@ import { BookingAddComponent } from './booking-add/booking-add.component';
     AppRoutingModule,
     ProductModule,
     UserModule,
-    ReturnModule,
     Ng2SearchPipeModule,
     
     

@@ -9,11 +9,11 @@ import { PretatousService } from 'src/app/service/pretatous.service';
 })
 export class BookingAddComponent implements OnInit {
 
-  bookingForm: FormGroup;
+  bookingRequestForm: FormGroup;
 
 
   constructor(private fb: FormBuilder, private pretatousService: PretatousService) { 
-    this.bookingForm = fb.group({
+    this.bookingRequestForm = fb.group({
       'product': [''], 
       'owner': [''], 
       'loaner': [''], 
@@ -23,15 +23,15 @@ export class BookingAddComponent implements OnInit {
   }
 
   onSubmit(){
-    this.pretatousService.createBookingRequest(this.bookingForm.value).subscribe(()=>{
-      this.bookingForm.reset();
+    this.pretatousService.createBookingRequest(this.bookingRequestForm.value).subscribe(()=>{
+      this.bookingRequestForm.reset();
     }, (error) => {
       console.log('Error, error');
     });
   }
 
   onReset() {
-    this.bookingForm.reset();
+    this.bookingRequestForm.reset();
   }
 
   ngOnInit(): void {

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReturnViewComponent } from './return-view.component';
+import { LoanComponent } from './loan.component';
 
-describe('ReturnViewComponent', () => {
-  let component: ReturnViewComponent;
-  let fixture: ComponentFixture<ReturnViewComponent>;
+describe('LoanComponent', () => {
+  let component: LoanComponent;
+  let fixture: ComponentFixture<LoanComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReturnViewComponent ]
+      declarations: [ LoanComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReturnViewComponent);
+    fixture = TestBed.createComponent(LoanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

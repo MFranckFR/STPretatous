@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <h3 style="text-align: center">Ajout d'une demande de réservation</h3>
+            <h3 style="text-align: center">Ajout d'un retour</h3>
 
-            <form [formGroup]="bookingRequestForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="returnForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="description">Product:</label>
+                    <label for="description">Emprunt:</label>
+                    <input type="text" class="form-group rounded-pill" name="loan" formControlName="loan" />
+                </div>
+                <div class="form-group">
+                    <label for="description">Produit:</label>
                     <input type="text" class="form-group rounded-pill" name="product" formControlName="product" />
                 </div>
 
@@ -19,12 +23,12 @@
                     <input type="text" class="form-group rounded-pill" name="loaner" formControlName="loaner" />
                 </div>
                 <div class="form-group">
-                    <label for="description">Début de la demande de réservation:</label>
-                    <input type="text" class="form-group rounded-pill" name="dtBkingStart" formControlName="dtBkingStart" />
+                    <label for="description">Date de retour:</label>
+                    <input type="text" class="form-group rounded-pill" name="dtRtn" formControlName="dtRtn" />
                 </div>
                 <div class="form-group">
-                    <label for="description">Fin de la demande de réservation:</label>
-                    <input type="text" class="form-group rounded-pill" name="dtBkingEnd" formControlName="dtBkingEnd" />
+                    <label for="description">Etat du produit:</label>
+                    <input type="text" class="form-group rounded-pill" name="productStatus" formControlName="productStatus" />
                 </div>
 
                 <button class="btn btn-outline-success rounded-pill" type="submit" (clic)="onSubmit()">

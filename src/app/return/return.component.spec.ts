@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReturnEditComponent } from './return-edit.component';
+import { ReturnComponent } from './return.component';
 
-describe('ReturnEditComponent', () => {
-  let component: ReturnEditComponent;
-  let fixture: ComponentFixture<ReturnEditComponent>;
+describe('ReturnComponent', () => {
+  let component: ReturnComponent;
+  let fixture: ComponentFixture<ReturnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReturnEditComponent ]
+      declarations: [ ReturnComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReturnEditComponent);
+    fixture = TestBed.createComponent(ReturnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

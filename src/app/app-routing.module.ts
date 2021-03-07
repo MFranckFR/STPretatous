@@ -14,6 +14,10 @@ import { SubscribeComponent } from './backup/subscribe/subscribe.component';
 import { TermsOfUseComponent } from './footerFiles/terms-of-use/terms-of-use.component';
 import { UploadImgComponent } from './upload-img/upload-img.component';
 import { BookingAddComponent } from './booking-add/booking-add.component';
+import { BookingComponent } from './booking/booking.component';
+import { LoanComponent } from './loan/loan.component';
+import { ReturnComponent } from './return/return.component';
+
 
 const routes: Routes = [
 
@@ -28,7 +32,11 @@ const routes: Routes = [
   { path: 'terms-of-use', component: TermsOfUseComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'photos', component: UploadImgComponent},
-  { path: 'booking', component: BookingAddComponent},
+  { path: 'booking-add', component: BookingAddComponent},
+  { path: 'booking', component: BookingComponent},
+  { path: 'loan', component: LoanComponent},
+  { path: 'return', component: ReturnComponent},
+
 
 
 //Lazing loading pour les modules "product" et "user"

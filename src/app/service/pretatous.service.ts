@@ -7,7 +7,7 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { User } from '../interface/user';
 import { Account } from '../interface/account';
 import { Product } from '../interface/product';
-import { Booking } from '../interface/booking';
+
 
 
 
@@ -201,15 +201,50 @@ updateProduct(id: number, data: Product): Observable<any> {
   )
 }
 
-/////////////////////////////////GESTION DES RESERVATIONS///////////////
+/////////////////////////////////GESTION DES DEMANDES DE RESERVATIONS///////////////
 
 createBookingRequest(bookingRequest: any): Observable<any> {
-  let url = `${this.url}/bookings`;
+  let url = `${this.url}/bookingRequests`;
   console.log('bookkingRequest', bookingRequest);
   return this.http.post(url, 
     JSON.stringify(bookingRequest),
     { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
 }
+
+
+/////////////////////////////////GESTION DES DEMANDES DE RESERVATIONS///////////////
+createBooking(booking: any): Observable<any> {
+  let url = `${this.url}/bookings`;
+  console.log('bookkingRequest', booking);
+  return this.http.post(url, 
+    JSON.stringify(booking),
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+}
+
+/////////////////////////////////GESTIONS DES EMPRUNTS////////////////////
+
+createLoan(loan: any): Observable<any> {
+  let url = `${this.url}/loans`;
+  console.log('loans', loan);
+  return this.http.post(url, 
+    JSON.stringify(loan),
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+}
+
+/////////////////////////////////GESTIONS DES EMPRUNTS////////////////////
+
+createReturn(returnProduct: any): Observable<any> {
+  let url = `${this.url}/returns`;
+  console.log('returns', returnProduct);
+  return this.http.post(url, 
+    JSON.stringify(returnProduct),
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+}
+
+
+
+
+
 
   ////////////////////////////////GESTION DES ERREURS//////////////////////
   handleError(error: any) {
