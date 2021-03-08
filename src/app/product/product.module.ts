@@ -9,6 +9,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ProductsListAllComponent } from './products-list-all/products-list-all.component';
 
 
 
@@ -18,7 +19,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ProductEditComponent, 
     ProductListComponent, 
     ProductViewComponent, 
-    ProductAddComponent
+    ProductAddComponent,
+    ProductsListAllComponent,
   ],
 
   imports: [

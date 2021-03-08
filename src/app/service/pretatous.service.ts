@@ -18,12 +18,16 @@ import { Product } from '../interface/product';
 export class PretatousService {
 
     //Adresse de l'APi à consommer
-  url: string = 'http://localhost:5555'
+  url: string = 'http://localhost:3000'
+  headers4post!: HttpHeaders;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    const token_initialize:string = "NGJkNzI5YjRlMGJjMmNmNDgyMTQ3ZTMzYmM4OGVlYmYyNjFhOGE0OGUyYjExYTljZDkwYzU4OGZjYzBjNmY4Ni8vLy8vLzEzMTA=";
+    this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
+
+  }
 
   httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}  
-
 
 ///////////////////////////////////////GESTION DES INSCRIPTIONS///////////////////////////
 
@@ -156,7 +160,7 @@ createProduct(product: any):Observable<any>{
   console.log('createAccountForm', product);
   return this.http.post(url, 
     JSON.stringify(product),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: this.headers4post, responseType: 'text' });
 }
 
 
@@ -192,6 +196,17 @@ getAllProducts():Observable<any> {
   )
 }
 
+getProducts(limit:number = 0):Observable<any> {
+  let url = `${this.url}/products?limit=` + limit;
+  return this.http.get<Product>(url)
+  .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
+}
+
+
+
 updateProduct(id: number, data: Product): Observable<any> {
   let url = `${this.url}/products/${id}`;
   console.log('updateProduct', id);
@@ -208,7 +223,7 @@ createBookingRequest(bookingRequest: any): Observable<any> {
   console.log('bookkingRequest', bookingRequest);
   return this.http.post(url, 
     JSON.stringify(bookingRequest),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: this.headers4post, responseType: 'text' });
 }
 
 

@@ -36,7 +36,7 @@ export class ProductAddComponent implements OnInit {
       'description': ['', Validators.required],
       'status': ['', Validators.required],
       'bookingEnabled': [''],
-      'images': ['']
+      'image': ''
     });
   }
 

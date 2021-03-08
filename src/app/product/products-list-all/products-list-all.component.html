@@ -1,0 +1,35 @@
+<!-- <img src="https://picsum.photos/seed/picsum/100/100?random=2" alt=""> -->
+
+<div class="container custom-container-2">
+      <div *ngIf="productsListAll">
+        <h3 class="mb-3 text-center">Liste de tous les produits</h3>
+    
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">image</th>
+                <!-- <th scope="col">Id</th> -->
+                <th scope="col">titre</th>
+                <th scope="col">description</th>
+                <th scope="col">status</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of productsListAll.data">
+                <td><img [src]="product.images" alt="product.description" width="50%" heigth="50%"></td>
+                <!-- <td>{{product.id}}</td> -->
+                <td>{{product.titre}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.status}}</td>
+                <td><button class="btn btn-outline-success rounded-pill" routerLink="/product/product-edit/{{product.id}}">Réserver</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+    </div>
+  
+  </div>
+

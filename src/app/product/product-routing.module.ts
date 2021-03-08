@@ -5,9 +5,11 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductsListAllComponent } from './products-list-all/products-list-all.component';
 
 
 const routes: Routes = [
+  { path: 'products-list-all', component: ProductsListAllComponent},
   { path: 'products-list', component: ProductListComponent},
   { path: 'product-edit/:id', component: ProductEditComponent},
   { path: 'product-view/:id', component: ProductViewComponent},

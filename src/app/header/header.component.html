@@ -81,6 +81,7 @@
   <img src="../../assets/images/icons8-lend-96.png" alt="" width="50" height="50">
   <button
     class="navbar-toggler"
+    
     type="button"
     data-toggle="collapse"
     data-target="#navbarSupportedContent"
@@ -112,6 +113,7 @@
           Produits
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="product/products-list-all">Liste des produits réservables</a>
           <a class="dropdown-item" routerLink="product/products-list">Liste des produits</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="product/product-add">Ajouter un produit</a>
@@ -223,12 +225,12 @@
 
 <mdb-card>
   <!-- <div class="text-white text-center rgba-stylish-strong py-4 px-3"> -->
-    <div class="jumbotron text-white text-center rgba-stylish-strong py-4 px-3 jumbotron-image shadow" style="background-image: url(https://images.unsplash.com/photo-1552152974-19b9caf99137?fit=crop&w=1350&q=80);">
+    <div class="jumbotron text-white text-center rgba-stylish-strong py-4 px-3 jumbotron-image shadow" style="background-image: url(../assets/images/banner-1989514_1280.png); background-repeat: no-repeat;">
     <div class="py-5">
       <h2 class="card-title h2 my-4 py-2">Prêt à tous</h2>
-      <a mdbBtn class="rounded-pill" gradient="blue" routerLink="/help" mdbWavesEffect>
+      <!-- <a mdbBtn class="rounded-pill" gradient="blue" routerLink="/help" mdbWavesEffect>
         <mdb-icon fas icon="clone" class="left"></mdb-icon> Mode d'emploi
-      </a>
+      </a> -->
     </div>
   </div>
 </mdb-card>
