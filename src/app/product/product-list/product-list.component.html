@@ -2,14 +2,14 @@
 
 <div class="container custom-container-2">
 
-    <!-- Si aucun compte n'est présent -->
-    <div class="no-data text-center" *ngIf="productList.length == 0">
-      <p>Aucune fiche produit</p>
-      <button class="btn btn-outline-primary" routerLink="/product/product-add">Ajouter une fiche produit</button>
-    </div>
-  
-    <!-- Liste des produits -->
-    <!-- <div *ngIf="productList.length !== 0">
+  <!-- Si aucun compte n'est présent -->
+  <div class="no-data text-center" *ngIf="productList.length == 0">
+    <p>Aucune fiche produit</p>
+    <button class="btn btn-outline-primary" routerLink="/product/product-add">Ajouter une fiche produit</button>
+  </div>
+
+  <!-- Liste des produits -->
+  <!-- <div *ngIf="productList.length !== 0">
       <h3 class="mb-3 text-center">Liste des produits</h3>
   
       <div class="col-md-12">
@@ -38,39 +38,57 @@
       </div> -->
 
 
-      <!-- Modif test -->
-      <div *ngIf="productList.length !== 0">
-        <h3 class="mb-3 text-center">Liste des produits</h3>
+  <!-- Modif test -->
+  
+  <div>
+    <h3 class="mb-3 text-center">Je prète ces objets</h3>
+    <ng-container *ngIf="productList">
+    <div class="col-md-12">
+
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#id</th>
+              <th scope="col">Image</th>
+              <th scope="col">Titre</th>
+              <!-- <th scope="col">Description</th> -->
+              <th scope="col">Chez qui?</th>
+              <th scope="col">Etat</th>
+              <th scope="col">Dispo?</th>
+              <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productList; let i=index;" (click)=selectProduct(product._id)>
+            <th scope="row"><div [title]=product._id >#{{i+1}}</div></th>
+            <td><img [src]="product.image" [title]="product.description" class="img-thumbnail"></td>
+            <td>{{product.title}}</td>
+            <!-- <td>{{product.description}}</td> -->
+            <td>{{product.ownerPseudo}}</td>
+            <td>{{product.status}}</td>
+            <td>
+                <div ng-show="product.available">Dispo</div>
+                <div ng-show="!product.available">Indispo.</div>
+              </td>
+            <td>
+              <button class="btn btn-outline-success rounded-pill"
+              routerLink="/product/product-edit/{{product._id}}">Editer</button>
+              <button class="btn btn-outline-danger rounded-pill"
+              (click)="deleteProduct(product._id)">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <pre><code>
+      {{ productList | json }}
+    </code></pre> -->
     
-        <div class="col-md-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">image</th>
-                <!-- <th scope="col">Id</th> -->
-                <th scope="col">titre</th>
-                <th scope="col">description</th>
-                <th scope="col">status</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let product of productList">
-                <td><img [src]="product.images" alt="product.description" width="50%" heigth="50%"></td>
-                <!-- <td>{{product.id}}</td> -->
-                <td>{{product.titre}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.status}}</td>
-                <td><button class="btn btn-outline-success rounded-pill" routerLink="/product/product-edit/{{product.id}}">Editer</button></td>
-                <td><button class="btn btn-outline-danger rounded-pill" (click)="deleteProduct(product.id)">Supprimer</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  </ng-container>
+    <!-- <pre><code>{{productList | json}}</code></pre> -->
 
 
-
-      <!-- <p>
+    <!-- <p>
         Pas d'inspiration, pas de problème !
       </p>
       
@@ -82,7 +100,7 @@
       <ng-template #noImageFound>
            <img src="fallbackImage.png" alt="Fallbackimage">
       </ng-template> -->
-  
-    </div>
-  
+
   </div>
+
+</div>

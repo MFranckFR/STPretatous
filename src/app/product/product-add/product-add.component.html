@@ -5,13 +5,13 @@
 
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="titre">Titre:</label>
+          <label for="title">Titre:</label>
           <input
             class="form-control rounded-pill"
             type="text"
             placeholder="Entrer un titre"
-            name="titre"
-            formControlName="titre"
+            name="title"
+            formControlName="title"
           />
         </div>
 
@@ -25,34 +25,61 @@
             formControlName="description"
           />
         </div>
-
-        <p>Statut</p>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
-            neuf
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            moyen
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            usé
-          </label>
+        <div class="form-group">
+          <label for="owner">Owner:</label>
+          <input
+            class="form-control rounded-pill"
+            type="text"
+            placeholder="hashID du owner"
+            name="owner"
+            formControlName="owner"
+          />
         </div>
 
+        <div class="form-group">
+          <label for="ownerPseudo">OwnerPseudo:</label>
+          <input
+            class="form-control rounded-pill"
+            type="text"
+            placeholder="Pseudo du owner"
+            name="ownerPseudo"
+            formControlName="ownerPseudo"
+          />
+        </div>
+
+
+        <div  class="form-group">
+          <label for="image">Photo</label>
+          <input class="form-control rounded-pill" type="text" name="image" formControlName="image" placeholder="url d'une image">
+        </div>
         <!-- Photo upload -->
         <!-- <div>
           <img [src]="urlImg" width="100" height="100" alt="">
           <input type="file" (change)="onFileSelected($event)">
           <button type="button" (clic)="onUpload()"> Uploader</button>
         </div> -->
+
+        <p>Statut</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="status" name="status" value="neuf">
+          <label class="form-check-label" for="status">
+            neuf
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="status" name="status" value="moyen" checked >
+          <label class="form-check-label" for="status">
+            moyen
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="status" name="status" value="usé">
+          <label class="form-check-label" for="status">
+            usé
+          </label>
+        </div>
+        
+       
   
         <!--  -->
 

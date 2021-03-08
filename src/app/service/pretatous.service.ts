@@ -8,20 +8,60 @@ import { User } from '../interface/user';
 import { Account } from '../interface/account';
 import { Product } from '../interface/product';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PretatousService {
 
     //Adresse de l'APi à consommer
-  url: string = 'http://localhost:5555'
+  url: string = 'http://localhost:3000';
+  headers4post!:HttpHeaders;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const token_initialize:string = 'ODY5YTA0NzYxODgyN2Q3NGYxYzBlMDJhMDIzMTkxZmU0NGRjZmQ4OWEzM2IyMDY4YWI1NTJjYmQyM2FhMTEwZS8vLy8vLzQ3MTg';
+    this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
 
-  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}  
 
+   }
+
+  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+
+/**
+ * Crockford decycling
+ * Eviter de déserialiser un objet dejà désérialisé, ce qui provoque l'erreurs
+ *
+ * stringify a comme second parametre une foncion qui permet d'écarter les objets déjà déserialisés.
+ * Mais cette méthode oblige à concerver une liste des objets déja déserialisés.
+ * La méthode de Crockford permet d'eviter celà.
+ * Erreor: ... cyclic object value
+ * Usage:
+ * Stringify(decycle(myObject))
+ *
+ * replaces recursive references with nulls
+ * sources:
+ * - https://github.com/douglascrockford/JSON-js/blob/master/cycle.js
+ * - https://stackoverflow.com/questions/9382167/serializing-object-that-contains-cyclic-object-value 
+ *
+ * @param {*} obj
+ * @param {*} [stack=[]]
+ * @returns Object or null
+ * @memberof PretatousService
+ */
+// decycle(obj:Object, stack=[]):Object {
+//     if (! obj || typeof obj !== 'object'){
+//         return obj;
+//     }
+//     if (stack.includes(obj)){
+//       return {}; //null
+//     }
+//     let s = stack.concat([obj]);
+//     return Array.isArray(obj) ? 
+//       obj.map(x => decycle(x, s))
+//       : Object.fromEntries(Object.entries(obj).map(
+//           ([k, v]) => [k, decycle(v, s)]));
+// }
 
 ///////////////////////////////////////GESTION DES INSCRIPTIONS///////////////////////////
 
@@ -29,7 +69,7 @@ export class PretatousService {
     addUser(subscribeContent: any):Observable<any>{
       let url = `${this.url}/users`;
       console.log('subscribeForm', subscribeContent);
-      return this.http.post(url, 
+      return this.http.post(url,
         JSON.stringify(subscribeContent),
         { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
   }
@@ -154,12 +194,12 @@ createProduct(product: any):Observable<any>{
   console.log('createAccountForm', product);
   return this.http.post(url, 
     JSON.stringify(product),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: this.headers4post, responseType: 'text' });
 }
 
 
 //Efface un produit par son id
-deleteProduct(id: any){
+deleteProduct(id: String){
   let url = `${this.url}/products/${id}`;
   return this.http.delete<Product>(url, this.httpOptions)
   .pipe(
@@ -169,7 +209,7 @@ deleteProduct(id: any){
 }
 
 //Récupérer un produit par son id
-getProduct(id:number): Observable<any> {
+getProduct(id:String): Observable<any> {
   let url = `${this.url}/products/${id}`;
   return this.http.get(url)
     .pipe(
@@ -183,21 +223,35 @@ getProduct(id:number): Observable<any> {
 //Récupère toute la liste des produits
 getAllProducts():Observable<any> {
   let url = `${this.url}/products/`;
-  return this.http.get<Product>(url)
+  return this.http.get<any>(url)
   .pipe(
     retry(1),
+    map((res:any)=>{
+      return res || {}
+    }),
     catchError(this.handleError)
   )
 }
 
-updateProduct(id: number, data: Product): Observable<any> {
+updateProduct(id: String, data: Product): Observable<any> {
   let url = `${this.url}/products/${id}`;
   console.log('updateProduct', id);
-  return this.http.put(url, data)
+  return this.http.patch(url, data)
   .pipe(
     catchError(this.handleError)
   )
 }
+///////////////////////////////// BookingRequest ////////////////////////////////////
+createBookingRequest(bookingRequest: any):Observable<any>{
+  var cache = [];
+  let url = `${this.url}/bookingrequests`;
+  console.log('createBookingRequest', bookingRequest);
+  return this.http.post(url,
+    JSON.stringify(bookingRequest),
+    { headers: this.headers4post, responseType: 'json' });
+}
+
+
 
 ////////////////////////////////////PRODUCT IMAGE FETCH FROM API///////////////////:id', component:
 getImage(imageUrl: string): Observable<Blob> {

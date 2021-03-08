@@ -3,7 +3,6 @@ ul.productImg li{
     list-style-type: none;
 }
 
-ul.productImg img{
-    border: thick double #8691D3;
-
+.divColor1{
+    background-color: #F8F9FA;
 }

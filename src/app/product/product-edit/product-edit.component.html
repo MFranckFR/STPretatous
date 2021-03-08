@@ -1,40 +1,62 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm">
-            <br>
-            <h2 style="text-align: center">Editer une fiche produit</h2>
-            <form (ngSubmit)="updateProduct()">
-                <!-- <div class="form-group" >
-                    Id: {{ product.id }}
-                </div> -->
-                <div>
-                    Titre :
-                    <input class="form-control rounded-pill" type="text" name="titre" [(ngModel)]="product.titre" required />
-                </div>
-                <div>
-                    Description :
-                    <input class="form-control rounded-pill" type="text" name="description" [(ngModel)]="product.description"
-                        required />
-                </div>
-                <div>
-                    Status :
-                    <input class="form-control rounded-pill" type="input" name="status" [(ngModel)]="product.status"
-                        />
-                </div>
+        <ng-container *ngIf="product">
+            <div class="col-sm">
                 <br>
+                <h2 style="text-align: center">Editer ma fiche de prêt</h2>
+                <form (ngSubmit)="updateProduct()">
+                    <!-- <div class="form-group" >
+                        Id: {{ product.id }}
+                    </div> -->
+                    <div>
+                        <label for="title">Prête</label>
+                        <input class="form-control rounded-pill" type="text" name="title" [(ngModel)]="product.title" required />
+                    </div>
+                    
+                    <div>
+                        <label for="owner">Owner</label>
+                        <input class="form-control rounded-pill" type="input" name="owner" [(ngModel)]="product.owner"
+                            />
+                    </div>
+                    <div>
+                        <label for="ownerPseudo">OwnerPseudo</label>
+                        <input class="form-control rounded-pill" type="input" name="ownerPseudo" [(ngModel)]="product.ownerPseudo"
+                            />
+                    </div>
 
-                <div >
-                    <ul class="productImg" *ngFor="let image of product.images; let i = index">
-                        <li>
-                            <img [src]="image" width="25%" heigth="25%" [title]="image"/>
-                            <label for="images">Img</label>
-                            <input type="text" name="image" [value]="image">
-                        </li>
-                    </ul>
-                </div>
+                    <div>
+                        <label for="status">Status</label>
+                        <input class="form-control rounded-pill" type="input" name="status" [(ngModel)]="product.status"
+                            />
+                    </div>
+                    <div>
+                        <label for="available">Disponible?</label>
+                        <input class="form-control rounded-pill" type="input" name="available" [(ngModel)]="product.available"
+                            />
+                    </div>
+                    
+                    <br>
+                    <div >
+                        <label for="image">Image</label>
+                        <input class="form-control rounded-pill" type="text" [(ngModel)]="product.image"  name="image" />
+                        <img [src]="product.image" title="Image produit" class="thumbnail" >
+                    </div>
 
-                <button class="btn btn-outline-success rounded-pill"  type="submit">Update</button>
-            </form>
-        </div>
+            
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea rows="10" class="form-control" type="text" name="description" [(ngModel)]="product.description"
+                            required></textarea>
+                    </div>
+
+                    <button class="btn btn-primary rounded-pill"  type="submit">Enregistrer</button>
+                    <button class="btn btn-primary rounded-pill" (click)="backToProductList()">Revenir à ma liste</button>
+                </form>
+            </div>
+            <!-- <pre><code>
+                {{ product | json }}
+            </code></pre> -->
+        </ng-container>
+       
     </div>
 </div>
