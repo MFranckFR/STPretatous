@@ -9,7 +9,7 @@ import { PretatousService } from 'src/app/service/pretatous.service';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
-  id!: number;
+  id!: String;
   product!: Product;
 
   constructor(
@@ -20,9 +20,19 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+    this.reload();
+  }
+
+  reload(){
     this.pretatousService.getProduct(this.id).subscribe((data) => {
-      console.log(data);
-      this.product = data;
+      console.log('reload', data);
+      if(data.status === 'success'){
+        this.product = data.data;
+      }else{
+        window.alert(data.message);
+      }
+
     });
   }
 
@@ -31,9 +41,20 @@ export class ProductEditComponent implements OnInit {
       this.pretatousService
         .updateProduct(this.id, this.product)
         .subscribe((data) => {
-          console.log(data);
+          if(data.status === 'success'){
+            alert(`Opération réussie ! ${data.status}`);
+          }
+          else if(data.status === 'error'){
+            alert(`Opération échouée ! ${data.message}`);
+          }else{
+            alert(`Problème imprévue: ${data}`);
+          }
         });
       this.router.navigateByUrl('product/products-list');
     }
+  }
+
+  backToProductList(){
+    this.router.navigateByUrl('products/products-list');
   }
 }

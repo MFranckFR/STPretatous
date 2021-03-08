@@ -23,34 +23,29 @@
     <!--/.Indicators-->
 
     <ng-container *ngIf="productList">
-
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
-
-        <!--First slide-->
-
-        <div class="carousel-item " *ngFor="let product of productList; let i = index" [ngClass]="{'active': i ==0}">
-          <div class="row">
-            <div class="col-md-4" *ngFor="let item of product; let j = index">
-              <div class="card mb-2">
-                <img class="card-img-top" [src]="item.image" alt="Card image cap">
-                <div class="card-body text-center">
-                  <h4 style="text-align: center;" class="card-title">{{item.title}}</h4>
-                  <p class="card-text">{{item.description}}</p>
-                  <a routerLink="/product/product-view/" class="btn btn-primary rounded-pill">Voir l'annonce</a>
+        <div class="mainLoop" *ngFor="let bundle of productList; let i = index;">
+          <!--First slide-->
+          <div class="carousel-item " *ngFor="let product of productList; let i = index" [ngClass]="{'active': i ==0}">
+            <div class="row">
+              <div class="col-md-4" *ngFor="let item of product; let j = index">
+                <div class="card mb-2">
+                  <img class="card-img-top" [src]="item.image" alt="Card image cap">
+                  <div class="card-body text-center">
+                    <h4 style="text-align: center;" class="card-title">{{item.title}}</h4>
+                    <p class="card-text">{{item.description}}</p>
+                    <a routerLink="/product/product-view/" class="btn btn-primary rounded-pill">Voir l'annonce</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <!--/.First slide-->
         </div>
-        <!--/.First slide-->
       </div>
-      <!-- <pre>
-        <code>
-          {{productList | json}}
-        </code>
-      </pre> -->
-      <!--/.Slides-->
+        <!--/.Slides-->
     </ng-container>
   </div>
   <!--/.Carousel Wrapper-->
+</div>

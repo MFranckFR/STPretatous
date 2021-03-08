@@ -1,9 +1,11 @@
 export interface Product {
-    id?: number;
-    titre?: string;
+    id?: string;
+    _id?: string;
+    title?: string;
     description?: string;
     status?: string;
-    images?: string;
+    owner?:string;
+    ownerPseudo?:string;
+    available?:boolean;
+    image?: string;
 }
-
-

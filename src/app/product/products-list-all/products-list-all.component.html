@@ -18,9 +18,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let product of productsListAll.data">
-                <td><img [src]="product.images" alt="product.description" width="50%" heigth="50%"></td>
+                <td><img [src]="product.image" alt="product.description" width="50%" heigth="50%"></td>
                 <!-- <td>{{product.id}}</td> -->
-                <td>{{product.titre}}</td>
+                <td>{{product.title}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.status}}</td>
                 <td><button class="btn btn-outline-success rounded-pill" routerLink="/product/product-edit/{{product.id}}">Réserver</button></td>

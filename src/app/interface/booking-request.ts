@@ -1,10 +1,10 @@
 export interface BookingRequest {
-    id?: number;
+    id?: string;
     product?: string;
     owner?: string;
     loaner?: string;
     status?: string;
-    hasBooking?:string;
+    isValidate?:string;
     dtStatus?: string;
     dtBkReqStart?: string
     dtBkReqEnd?: string

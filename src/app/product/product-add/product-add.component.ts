@@ -18,9 +18,6 @@ export class ProductAddComponent implements OnInit {
   // urlImg = "https://www.naturephotographie.com/wp-content/uploads/2018/02/Solitude-Hymns.jpg";
   // selectedFile!: File;
   // const URL = '/api/';
-  
-
-  
 
   @HostListener('input') oninput() {
 
@@ -32,11 +29,13 @@ export class ProductAddComponent implements OnInit {
   constructor(private fb: FormBuilder,private pretatousService: PretatousService) {
 
     this.productForm = fb.group({
-      'titre': ['', Validators.required],
+      'title': ['', Validators.required],
       'description': ['', Validators.required],
+      'owner': ['', [Validators.required]],
+      'ownerPseudo': ['', [Validators.required]],
       'status': ['', Validators.required],
-      'bookingEnabled': [''],
-      'image': ''
+      'available': ['true'],
+      'image': ['']
     });
   }
 

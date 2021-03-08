@@ -10,7 +10,7 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProductsListAllComponent } from './products-list-all/products-list-all.component';
-
+import { AngularMaterialModule } from '../angular-material.module';
 
 
 
@@ -29,6 +29,7 @@ import { ProductsListAllComponent } from './products-list-all/products-list-all.
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    AngularMaterialModule,
    
 
   ]

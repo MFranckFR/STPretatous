@@ -1,22 +1,57 @@
-<div class="container-fluid">
-  <h2 style="text-align: center">{{ product.titre }}</h2>
-  <hr />
-  <div *ngIf="product">
-    <div><b>id: </b> {{ product.id }}</div>
-    <div><strong>titre: </strong>{{ product.titre }}</div>
-    <div><strong>description: </strong>{{ product.description }}</div>
-    <div><strong>état du produit: </strong>{{ product.status }}</div>
-    <div>
-      <br>
-      <ul
-        class="productImg"
-        *ngFor="let image of product.images; let i = index"
-      >
-        <li><img [src]="image" width="25%" heigth="25%" [title]="image" /></li>
-        <li><button class="btn btn-outline-success rounded-pill">Emprunter</button></li>
+
+
+  <ng-container *ngIf="product">
+
+    <div class="row container divColor1">
+
+      <h2 class="mb-3 text-center" style="text-align: center">{{ product.title }}</h2>
+
+      <!-- Reservation du produit -->
+      <div #contenu>
+        <button class="btn btn-primary rounded-pill" (click)="toggleBookingForm()">Demande de réservation</button>
+      </div>
+        <div class="form-group" *ngIf="showForm">
+        <form  [formGroup]="bookingRequestForm" (ngSubmit)="sendBookingRequest()">
+         <!-- <label for="id">ProductId</label>  -->
+         <input type="hidden" formControlName="product" name="product"  />
+         <!-- <label for="id">owner</label>  -->
+         <input type="hidden" formControlName="owner" name="owner" />
+          <!-- <label for="loaner">loaner</label>  -->
+          <input type="hidden" formControlName="loaner" name="loaner"/>
+        <br/>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="dtBkingStart" placeholder="Start date">
+              <input matEndDate formControlName="dtBkingEnd" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="bookingRequestForm.controls.dtBkingStart.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="bookingRequestForm.controls.dtBkingEnd.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+
+          <button class="btn btn-primary rounded-pill"  type="submit">Envoyez !</button>
+          <button class="btn btn-secondary rounded-pill"  type="cancel" (click)="toggleBookingForm()">Finalement Non</button>
+      </form>
+      </div>
+      <!-- /Reservation du produit -->
+
+      <ul class="productImg col">
+        <!-- <li><strong>id:</strong>{{ product._id }}</li> -->
+        <li><strong>Prêteur:</strong> {{product.ownerPseudo}} </li>
+        <li><strong>Titre: </strong>{{ product.title }}</li>
+        <li><strong>Etat du produit: </strong>{{ product.status }}</li>
+        <li>
+          <strong>Disponible?: </strong><span *ngIf="product.available;else indisponible">Dispo</span>
+          <ng-template #indisponible>Indispo</ng-template>
+        </li>
+        <li><strong>Description: </strong>{{ product.description }}</li>
       </ul>
+      <img class="col img-responsive shadow p-3 mb-3 bg-white rounded" [src]="product.image" width="20pt" heigth="50pt" [title]="product.description" />
+    </div>
 
-    
+  </ng-container>
 
-      
-</div>

@@ -8,26 +8,26 @@ import { User } from '../interface/user';
 import { Account } from '../interface/account';
 import { Product } from '../interface/product';
 
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PretatousService {
 
     //Adresse de l'APi à consommer
-  url: string = 'http://localhost:3000'
-  headers4post!: HttpHeaders;
+  url: string = 'http://localhost:3000';
+  headers4post!:HttpHeaders;
 
-  constructor(private http: HttpClient) { 
-    const token_initialize:string = "NGJkNzI5YjRlMGJjMmNmNDgyMTQ3ZTMzYmM4OGVlYmYyNjFhOGE0OGUyYjExYTljZDkwYzU4OGZjYzBjNmY4Ni8vLy8vLzEzMTA=";
+  constructor(private http: HttpClient) {
+    const token_initialize:string = 'ODY5YTA0NzYxODgyN2Q3NGYxYzBlMDJhMDIzMTkxZmU0NGRjZmQ4OWEzM2IyMDY4YWI1NTJjYmQyM2FhMTEwZS8vLy8vLzQ3MTg';
     this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
 
-  }
 
-  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}  
+   }
+
+  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+
 
 ///////////////////////////////////////GESTION DES INSCRIPTIONS///////////////////////////
 
@@ -35,9 +35,9 @@ export class PretatousService {
     addUser(subscribeContent: any):Observable<any>{
       let url = `${this.url}/users`;
       console.log('subscribeForm', subscribeContent);
-      return this.http.post(url, 
+      return this.http.post(url,
         JSON.stringify(subscribeContent),
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
   }
 
     //Pour récupérer la liste de tous les subscribers
@@ -89,9 +89,9 @@ export class PretatousService {
 
   
 
-  // getUserAccount(id: number): Observable<any> {
+  // getUserAccount(id: String): Observable<any> {
   //   let API_URL = `${this.url}/accounts/${id}`;
-  //   return this.http.get(API_URL, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' })
+  //   return this.http.get(API_URL, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' })
   //     .pipe(
   //       map((res: any) => {
   //         return res || {}
@@ -111,7 +111,7 @@ export class PretatousService {
     console.log('createAccountForm', account);
     return this.http.post(url, 
       JSON.stringify(account),
-      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
 }
   //Pour récupérer la liste de tous les comptes utilisateurs
   getAllAccount():Observable<any> {
@@ -160,12 +160,12 @@ createProduct(product: any):Observable<any>{
   console.log('createAccountForm', product);
   return this.http.post(url, 
     JSON.stringify(product),
-    { headers: this.headers4post, responseType: 'text' });
+    { headers: this.headers4post, responseType: 'json' });
 }
 
 
 //Efface un produit par son id
-deleteProduct(id: any){
+deleteProduct(id: String){
   let url = `${this.url}/products/${id}`;
   return this.http.delete<Product>(url, this.httpOptions)
   .pipe(
@@ -175,7 +175,7 @@ deleteProduct(id: any){
 }
 
 //Récupérer un produit par son id
-getProduct(id:number): Observable<any> {
+getProduct(id:String): Observable<any> {
   let url = `${this.url}/products/${id}`;
   return this.http.get(url)
     .pipe(
@@ -189,9 +189,12 @@ getProduct(id:number): Observable<any> {
 //Récupère toute la liste des produits
 getAllProducts():Observable<any> {
   let url = `${this.url}/products/`;
-  return this.http.get<Product>(url)
+  return this.http.get<any>(url)
   .pipe(
     retry(1),
+    map((res:any)=>{
+      return res || {}
+    }),
     catchError(this.handleError)
   )
 }
@@ -207,10 +210,10 @@ getProducts(limit:number = 0):Observable<any> {
 
 
 
-updateProduct(id: number, data: Product): Observable<any> {
+updateProduct(id: String, data: Product): Observable<any> {
   let url = `${this.url}/products/${id}`;
   console.log('updateProduct', id);
-  return this.http.put(url, data)
+  return this.http.patch(url, data)
   .pipe(
     catchError(this.handleError)
   )
@@ -223,7 +226,7 @@ createBookingRequest(bookingRequest: any): Observable<any> {
   console.log('bookkingRequest', bookingRequest);
   return this.http.post(url, 
     JSON.stringify(bookingRequest),
-    { headers: this.headers4post, responseType: 'text' });
+    { headers: this.headers4post, responseType: 'json' });
 }
 
 
@@ -233,7 +236,7 @@ createBooking(booking: any): Observable<any> {
   console.log('bookkingRequest', booking);
   return this.http.post(url, 
     JSON.stringify(booking),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
 }
 
 /////////////////////////////////GESTIONS DES EMPRUNTS////////////////////
@@ -243,7 +246,7 @@ createLoan(loan: any): Observable<any> {
   console.log('loans', loan);
   return this.http.post(url, 
     JSON.stringify(loan),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
 }
 
 /////////////////////////////////GESTIONS DES EMPRUNTS////////////////////
@@ -253,7 +256,7 @@ createReturn(returnProduct: any): Observable<any> {
   console.log('returns', returnProduct);
   return this.http.post(url, 
     JSON.stringify(returnProduct),
-    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
 }
 
 

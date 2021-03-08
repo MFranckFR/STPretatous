@@ -18,12 +18,12 @@ export class AppComponent {
     this.router.navigate(['']);
   }
 
-  isConnected(){ 
+  isConnected(){
     if (Boolean(localStorage.getItem('isConnected'))){
       return true;
     } else {
       return false;
     }
   }
-  
+
 }
