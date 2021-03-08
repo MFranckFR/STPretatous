@@ -25,24 +25,24 @@
     <ng-container *ngIf="productList">
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
-        <div class="mainLoop" *ngFor="let bundle of productList; let i = index;">
+        
           <!--First slide-->
-          <div class="carousel-item " *ngFor="let product of productList; let i = index" [ngClass]="{'active': i ==0}">
+          <div class="loopProduct carousel-item" *ngFor="let product of productList; let i = index" [ngClass]="{'active': i ==0}">
             <div class="row">
               <div class="col-md-4" *ngFor="let item of product; let j = index">
-                <div class="card mb-2">
+                <div class="card mb-2" (click)="goToView(item._id)">
                   <img class="card-img-top" [src]="item.image" alt="Card image cap">
                   <div class="card-body text-center">
                     <h4 style="text-align: center;" class="card-title">{{item.title}}</h4>
                     <p class="card-text">{{item.description}}</p>
-                    <a routerLink="/product/product-view/" class="btn btn-primary rounded-pill">Voir l'annonce</a>
+                    <a class="btn btn-primary rounded-pill">Voir l'annonce</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <!--/.First slide-->
-        </div>
+       
       </div>
         <!--/.Slides-->
     </ng-container>
