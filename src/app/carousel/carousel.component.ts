@@ -11,7 +11,7 @@ export class CarouselComponent implements OnInit {
     productList : any;
 
     constructor(private pretatousService : PretatousService,
-      private router : Router, 
+      private router : Router,
       private route : ActivatedRoute) {}
 
     chunks(array : any, size : number) {

@@ -41,6 +41,12 @@ import { BookingAddComponent } from './booking-add/booking-add.component';
 import { BookingComponent } from './booking/booking.component';
 import { LoanComponent } from './loan/loan.component';
 import { ReturnComponent } from './return/return.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -68,9 +74,8 @@ import { ReturnComponent } from './return/return.component';
     BookingComponent,
     LoanComponent,
     ReturnComponent,
+    SearchBarComponent,
 
- 
-  
   ],
 
   imports: [
@@ -80,9 +85,6 @@ import { ReturnComponent } from './return/return.component';
     ProductModule,
     UserModule,
     Ng2SearchPipeModule,
-    
-    
-  
 
     //Module pour uploader les images sur le serveur
     FileUploadModule,
@@ -93,9 +95,12 @@ import { ReturnComponent } from './return/return.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    
-    
-    
+    MatIconModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatFormFieldModule,
+
   ],
 
   providers: [],

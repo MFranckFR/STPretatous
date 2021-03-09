@@ -23,7 +23,6 @@ export class PretatousService {
     const token_initialize:string = 'MDRiYTNmMTRmMWZlNWUzOTE2MTFjMzZhODZiOGQxY2E5MzdiYzNiOWE1NTI2ODFlZTM1YmFhYjIxNzA0NzYzNS8vLy8vLzMxNjQ';
     this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
 
-
    }
 
   httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}
@@ -140,7 +139,7 @@ export class PretatousService {
   }
 
     //Pour mettre à jour un compte utilisateurs
-    updateUserAccount(id: number, data: Account): Observable<any> {
+    updateUserAccount(id: string, data: Account): Observable<any> {
       let url = `${this.url}/accounts/${id}`;
       return this.http.put(url, data)
       .pipe(
@@ -149,7 +148,7 @@ export class PretatousService {
   }
 
     //Pour effacer un compte utilisateurs
-    deleteUserAccount(id: any){
+    deleteUserAccount(id: string){
       let url = `${this.url}/accounts/${id}`;
       return this.http.delete<Account>(url, this.httpOptions)
       .pipe(
@@ -264,7 +263,11 @@ createReturn(returnProduct: any): Observable<any> {
 }
 
 
+///////////////////////////////SEARCH BAR////////////////////////////////
 
+searchBar(): Observable<Product[]>{
+  return this.http.get<Product[]>(this.url);
+}
 
 
 

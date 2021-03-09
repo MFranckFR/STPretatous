@@ -10,7 +10,7 @@
  
     <div class="navbar navbar-default">
         <div class="navbar-header">
-            <a class="navbar-brand" href>Angular2 File Upload</a>
+            <a class="navbar-brand" href>Module d'insertion de photos</a>
         </div>
     </div>
  
@@ -18,23 +18,23 @@
  
         <div class="col-md-3">
  
-            <h3>Select files</h3>
+            <h3>Séléectionner les fichiers</h3>
  
             <div ng2FileDrop
                  [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
                  (fileOver)="fileOverBase($event)"
                  [uploader]="uploader"
                  class="well my-drop-zone">
-                Base drop zone
+                Déposer vos photos
             </div>
  
-            <div ng2FileDrop
+            <!-- <div ng2FileDrop
                  [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
                  (fileOver)="fileOverAnother($event)"
                  [uploader]="uploader"
                  class="well my-drop-zone">
                 Another drop zone
-            </div>
+            </div> -->
  
             Multiple
             <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
@@ -45,17 +45,17 @@
  
         <div class="col-md-9" style="margin-bottom: 40px">
  
-            <h3>Upload queue</h3>
-            <p>Queue length: {{ uploader?.queue?.length }}</p>
+            <h3>File d'attente</h3>
+            <p>Taille de la file: {{ uploader?.queue?.length }}</p>
  
             <table class="table">
                 <thead>
                 <tr>
-                    <th width="50%">Name</th>
-                    <th>Size</th>
-                    <th>Progress</th>
+                    <th width="50%">Nom du fichier</th>
+                    <th>Poids</th>
+                    <th>Progression</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,15 +75,15 @@
                     <td nowrap>
                         <button type="button" class="btn btn-success btn-xs"
                                 (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                            <span class="glyphicon glyphicon-upload"></span> Upload
+                            <span class="glyphicon glyphicon-upload"></span> Téléverser
                         </button>
                         <button type="button" class="btn btn-warning btn-xs"
                                 (click)="item.cancel()" [disabled]="!item.isUploading">
-                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                            <span class="glyphicon glyphicon-ban-circle"></span> Annuler
                         </button>
                         <button type="button" class="btn btn-danger btn-xs"
                                 (click)="item.remove()">
-                            <span class="glyphicon glyphicon-trash"></span> Remove
+                            <span class="glyphicon glyphicon-trash"></span> Retirer
                         </button>
                     </td>
                 </tr>
@@ -92,22 +92,23 @@
  
             <div>
                 <div>
-                    Queue progress:
+                    <!-- Queue progress: -->
                     <div class="progress" style="">
                         <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                     </div>
                 </div>
+                <br>
                 <button type="button" class="btn btn-success btn-s"
                         (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                    <span class="glyphicon glyphicon-upload"></span> Tout téléverser
                 </button>
                 <button type="button" class="btn btn-warning btn-s"
                         (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                    <span class="glyphicon glyphicon-ban-circle"></span> Tout annuler
                 </button>
                 <button type="button" class="btn btn-danger btn-s"
                         (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                    <span class="glyphicon glyphicon-trash"></span> Tout retirer
                 </button>
             </div>
  
@@ -117,7 +118,7 @@
  
     <br><br>
  
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Response</div>
@@ -126,5 +127,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
