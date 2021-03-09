@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Account } from 'src/app/interface/account';
+import { User } from 'src/app/interface/user';
 import { PretatousService } from 'src/app/service/pretatous.service';
 
 
@@ -13,9 +13,9 @@ import { PretatousService } from 'src/app/service/pretatous.service';
 
 export class UserEditComponent implements OnInit {
 
-  id!: number;
+  id!: string;
   
-  account!: Account;
+  user!: User;
 
   constructor(
     // public fb: FormBuilder,
@@ -48,7 +48,7 @@ export class UserEditComponent implements OnInit {
   // public handleError = (controlName: string, errorName: string) => {
   //   return this.userForm.controls[controlName].hasError(errorName);
   // }
-  
+
   // updateAccount() {
   //   var id = this.actRoute.snapshot.paramMap.get('id') || '';
   //   if(window.confirm('Voulez-vous mettre à jour le compte utilisateur')){
@@ -59,23 +59,20 @@ export class UserEditComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    
+
     this.id = this.Route.snapshot.params['id'];
     this.pretatousService.getOneUser(this.id).subscribe( data => {
       console.log(data);
-      this.account = data ;
+      this.user = data ;
     })
   }
 
 
-  updateAccount(){
-    if (window.confirm('Souhaitez-vous mettre à jour le compte ?')) {
-    this.pretatousService
-    .updateOneUser(this.id, this.account)
-    .subscribe( (data) => {
-      console.log(data);
-    });
-    this.router.navigateByUrl('user/users-list');
+  updateAccount() {
+      this.pretatousService.updateOneUser(this.id, this.user).subscribe((data) => {
+          console.log(data);
+      });
+      this.router.navigateByUrl('user/users-list');
   }
-}
+
 }

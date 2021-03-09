@@ -20,7 +20,7 @@ export class PretatousService {
   headers4post!:HttpHeaders;
 
   constructor(private http: HttpClient) {
-    const token_initialize:string = 'ODY5YTA0NzYxODgyN2Q3NGYxYzBlMDJhMDIzMTkxZmU0NGRjZmQ4OWEzM2IyMDY4YWI1NTJjYmQyM2FhMTEwZS8vLy8vLzQ3MTg';
+    const token_initialize:string = 'MDRiYTNmMTRmMWZlNWUzOTE2MTFjMzZhODZiOGQxY2E5MzdiYzNiOWE1NTI2ODFlZTM1YmFhYjIxNzA0NzYzNS8vLy8vLzMxNjQ';
     this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
 
 
@@ -33,39 +33,43 @@ export class PretatousService {
 
   //Pour poster sur le server le résultat du formulaire
     addUser(subscribeContent: any):Observable<any>{
-      let url = `${this.url}/users`;
+      let url = `${this.url}/useraccounts`;
       console.log('subscribeForm', subscribeContent);
       return this.http.post(url,
         JSON.stringify(subscribeContent),
-        { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'json' });
+      { headers: this.headers4post, responseType: 'json' });
   }
 
     //Pour récupérer la liste de tous les subscribers
-    getAllUser():Observable<any> {
-      let url = `${this.url}/users/`;
+    getAllUsers():Observable<any> {
+      let url = `${this.url}/useraccounts/`;
       return this.http.get<User>(url)
       .pipe(
         retry(1),
+        map((res: any) => {
+          return res.data || {}
+        }),
         catchError(this.handleError)
       )
     }
 
       //Pour récupérer un subscriber
-    getOneUser(id:number): Observable<any> {
-      let url = `${this.url}/users/${id}`;
+    getOneUser(id:string): Observable<any> {
+      let url = `${this.url}/useraccounts/${id}`;
       return this.http.get(url)
       .pipe(
         map((res: any) => {
-          return res || {}
+          return res.data || {}
         }),
         catchError(this.handleError)
       )
   }
 
     //Pour mettre à jour un compte utilisateurs
-    updateOneUser(id: number, data: User): Observable<any> {
-      let url = `${this.url}/users/${id}`;
-      return this.http.put(url, data)
+    updateOneUser(id: string, data: User): Observable<any> {
+      console.log('updateOneUser', id);
+      let url = `${this.url}/useraccounts/${id}`;
+      return this.http.patch(url, data)
       .pipe(
         catchError(this.handleError)
       )
@@ -124,7 +128,7 @@ export class PretatousService {
   }
 
   //Pour récupérer un compte utilisateur
-  getOneAccount(id:number): Observable<any> {
+  getOneAccount(id:string): Observable<any> {
     let url = `${this.url}/accounts/${id}`;
     return this.http.get(url)
       .pipe(

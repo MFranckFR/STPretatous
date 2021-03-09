@@ -5,13 +5,13 @@
 
   <form (ngSubmit)="updateAccount()">
       <div>
-          Id : Id: {{ account.id }} 
+          Id : Id: {{ user.id }} 
       </div>
       <div>
-          Login : <input class="form-control rounded-pill" type="text" name="login" [(ngModel)]=account.login required> 
+          Login : <input class="form-control rounded-pill" type="text" name="login" [(ngModel)]=user.login required> 
       </div>
       <div>
-          Password : <input class="form-control rounded-pill" type="text" name="password" [(ngModel)]=account.password required> 
+          Password : <input class="form-control rounded-pill" type="text" name="password" [(ngModel)]=user.password required> 
       </div>
       <button mdbBtn
       color="info"
@@ -25,91 +25,83 @@
         <div class="col-sm">
             <br>
             <h2 style="text-align: center">Editer une fiche utilisateur</h2>
-            <form (ngSubmit)="updateAccount()">
-                <!-- <div class="form-group" >
-                    Id: {{ product.id }}
-                </div> -->
-                <div>
-                    Id :
-                    <input class="form-control rounded-pill" type="text" name="id" [(ngModel)]="account.id" required />
-                </div>
-                <div>
-                    Pseudo :
-                    <input class="form-control rounded-pill" type="text" name="pseudo" [(ngModel)]="account.pseudo"
-                        required />
-                </div>
-                <div>
-                    Nom :
-                    <input class="form-control rounded-pill" type="text" name="firstName" [(ngModel)]="account.firstName"
-                        required />
-                </div>
-                <div>
-                    Prénom :
-                    <input class="form-control rounded-pill" type="text" name="lastName" [(ngModel)]="account.lastName" required />
-                </div>
-                <div>
-                    Email :
-                    <input class="form-control rounded-pill" type="text" name="email" [(ngModel)]="account.email"
-                        required />
-                </div>
-                <div>
-                    Adresse :
-                    <input class="form-control rounded-pill" type="text" name="address" [(ngModel)]="account.address"
-                        required />
-                </div>
-                <div>
-                    Complément d'adresse :
-                    <input class="form-control rounded-pill" type="text" name="addressAdd" [(ngModel)]="account.addressAdd" required />
-                </div>
-                <div>
-                    Code Postale :
-                    <input class="form-control rounded-pill" type="text" name="zipCode" [(ngModel)]="account.zipCode"
-                        required />
-                </div>
-                <div>
-                    Ville :
-                    <input class="form-control rounded-pill" type="text" name="city" [(ngModel)]="account.city"
-                        required />
-                </div>
-                <div>
-                    Pays :
-                    <input class="form-control rounded-pill" type="text" name="country" [(ngModel)]="account.country" required />
-                </div>
-                <div>
-                    Téléphone :
-                    <input class="form-control rounded-pill" type="text" name="phone" [(ngModel)]="account.phone"
-                        required />
-                </div>
-                <div>
-                    Mobile :
-                    <input class="form-control rounded-pill" type="text" name="mobile" [(ngModel)]="account.mobile"
-                        required />
-                </div>
-                <div>
-                    Mot de passe :
-                    <input class="form-control rounded-pill" type="text" name="password" [(ngModel)]="account.password"
-                        required />
-                </div>
-                <div>
-                    Confimration du mot de passe :
-                    <input class="form-control rounded-pill" type="text" name="confirmPassword" [(ngModel)]="account.confirmPassword"
-                        required />
-                </div>
-                <br>
 
-                <!-- <div >
-                    <ul class="accountImg" *ngFor="let image of account.images; let i = index">
-                        <li>
-                            <img [src]="image" width="25%" heigth="25%" [title]="image"/>
-                            <label for="images">Img</label>
-                            <input type="text" name="image" [value]="image">
-                        </li>
-                    </ul>
-                </div> -->
-
-                <button class="btn btn-outline-success rounded-pill"  type="submit">Update</button>
-            </form>
+            <ng-container *ngIf="user">
+                
+                <form (ngSubmit)="updateAccount()">
+                    <div class="col">
+                        <div class="col">
+                            Pseudo :
+                            <input class="form-control rounded-pill" type="text" name="pseudo" [(ngModel)]="user.pseudo"
+                                required />
+                        </div>
+                        <div class="col">
+                            Mot de passe :
+                            <input class="form-control rounded-pill" type="text" name="password"
+                                [(ngModel)]="user.password" required />
+                        </div>
+                        <div class="col">
+                            Confimration du mot de passe :
+                            <input class="form-control rounded-pill" type="text" name="confirmPassword"
+                                [(ngModel)]="user.confirmPassword" required />
+                        </div>
+                        <div class="col">
+                            Email :
+                            <input class="form-control rounded-pill" type="text" name="email" [(ngModel)]="user.email"
+                                required />
+                        </div>
+                        <div class="col">
+                            Nom :
+                            <input class="form-control rounded-pill" type="text" name="firstName"
+                                [(ngModel)]="user.firstName" required />
+                        </div>
+                        <div class="col">
+                            Prénom :
+                            <input class="form-control rounded-pill" type="text" name="lastName"
+                                [(ngModel)]="user.lastName" required />
+                        </div>
+                        <div class="col">
+                            Adresse :
+                            <input class="form-control rounded-pill" type="text" name="address"
+                                [(ngModel)]="user.address" required />
+                        </div>
+                        <div class="col">
+                            Complément d'adresse :
+                            <input class="form-control rounded-pill" type="text" name="addressAdd"
+                                [(ngModel)]="user.addressAdd" required />
+                        </div>
+                        <div class="col">
+                            Code Postale :
+                            <input class="form-control rounded-pill" type="text" name="zipCode"
+                                [(ngModel)]="user.zipCode" required />
+                        </div>
+                        <div class="col">
+                            Ville :
+                            <input class="form-control rounded-pill" type="text" name="city" [(ngModel)]="user.city"
+                                required />
+                        </div>
+                        <div class="col">
+                            Pays :
+                            <input class="form-control rounded-pill" type="text" name="country"
+                                [(ngModel)]="user.country" required />
+                        </div>
+                        <div class="col">
+                            Mobile :
+                            <input class="form-control rounded-pill" type="text" name="mobile" [(ngModel)]="user.mobile"
+                                required />
+                        </div>
+                        <div class="col">
+                            Photo :
+                            <input class="form-control rounded-pill" type="text" name="picture"
+                                [(ngModel)]="user.picture" required />
+                        </div>
+                        <button class="btn btn-outline-success rounded-pill" type="submit">Enregistrer</button>
+                        <div class="row">
+                            <img class="col img-responsive shadow p-3 mb-3 bg-white rounded" [src]="user.picture" title="User picture" />
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
         </div>
     </div>
 </div>
-

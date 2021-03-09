@@ -1,15 +1,24 @@
 <div class="container-fluid">
-  <h2 style="text-align: center">User view</h2>
+  <h2 style="text-align: center">Utilisateur</h2>
   <hr />
-  <div *ngIf="user">
-    <div>
-      <label><b>id: </b></label> {{ user.id }}
+  <div *ngIf="user" class="row">
+    <ul class="col">
+      <!-- <li><strong>id:</strong>{{ product._id }}</li> -->
+      <li><strong>Pseudo:</strong> {{user.pseudo}} </li>
+      <li><strong>email: </strong>{{ user.email }}</li>
+      <li><strong>Prénom:</strong><span>{{ user.firstName}}</span>
+      <li><strong>Nom: </strong>{{ user.lastName }}</li>
+      <li><strong>Adresse:</strong>{{ user.address }}</li>
+      <li><strong>Adresse Compl.:</strong>{{ user.addressAdd }}</li>
+      <li><strong>Code Postal:</strong>{{ user.zipCode }}</li>
+      <li><strong>Ville:</strong>{{ user.city }}</li>
+      <li><strong>Pays:</strong>{{ user.country }}</li>
+      <li><strong>Mobile:</strong>{{ user.mobile }}</li>
+    </ul>
+    <div class="btnBpx col">
+      <button class="btn btn-primary rounded-pill" (click)="goToEdit()">Editer</button>
     </div>
-    <div>
-      <label><b>login: </b></label> {{ user.login }}
-    </div>
-    <div>
-      <label><b>password: </b></label> {{ user.password }}
-    </div>
+    <strong>Photo:</strong><img class="col img-responsive shadow p-3 mb-3 bg-white rounded" [src]="user.picture" title="{{ user.firstName + ' ' + user.lastName}}" />
   </div>
 </div>
+<h2>toto</h2>

@@ -12,7 +12,7 @@ import { PretatousService } from '../../service/pretatous.service';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
-  
+
   // ////////////////////////////////////////////////////
 
   userForm: FormGroup;
@@ -30,20 +30,22 @@ export class UserAddComponent implements OnInit {
   constructor(private fb: FormBuilder, private pretatousService: PretatousService) {
 
     this.userForm = fb.group({
-      
+
       'pseudo': ['', Validators.required],
+      'email': ['', Validators.compose([Validators.required, Validators.email])],
+      'password': ['', [Validators.required, Validators.minLength(6)]],
+      'confirmPassword': ['', [Validators.required]],
+
       'firstName': ['', Validators.required],
       'lastName': ['', Validators.required],
-      'email': ['', Validators.compose([Validators.required, Validators.email])],
+      
       'address': ['', [Validators.required]],
       'addressAdd': ['', [Validators.required]],
       'zipCode': ['', [Validators.required]],
       'city': ['', [Validators.required]],
       'country': ['', [Validators.required]],
-      'phone': ['', [Validators.required]],
       'mobile': ['', [Validators.required]],
-      'password': ['', [Validators.required, Validators.minLength(6)]],
-      'confirmPassword': ['', [Validators.required]],
+      'picture': ['', [Validators.required]]
     });
   }
 
@@ -52,8 +54,7 @@ export class UserAddComponent implements OnInit {
   onSubmit() {
     this.pretatousService.addUser(this.userForm.value).subscribe(() => {
       alert('Votre inscription a bien été enregistrée.');
-      this.userForm.reset();
-      this.disabledSubmitButton = false;
+      // this.userForm.reset();
     }, error => {
       console.log('Error', error);
     });
@@ -62,7 +63,7 @@ export class UserAddComponent implements OnInit {
   onReset(){
     this.userForm.reset();
   }
-  
+
   toggleFieldTextType(){
     this.fieldTextType = !this.fieldTextType;
   }
@@ -70,5 +71,4 @@ export class UserAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
 }

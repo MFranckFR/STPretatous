@@ -1,37 +1,37 @@
 <div class="container custom-container-2">
 
-    <!-- Si aucun compte n'est présent -->
-    <div class="no-data text-center" *ngIf="userAccount.length == 0">
-      <p>Aucun compte utilisateur pour le moment!</p>
-      <button class="btn btn-outline-primary" routerLink="/user/user-add">Ajouter des comptes utilisateurs</button>
-    </div>
-  
     <!-- Liste des comptes utilisateurs -->
-    <div *ngIf="userAccount.length !== 0">
+    <div *ngIf="userList">
       <h3 class="mb-3 text-center">Liste des comptes utilisateurs</h3>
   
       <div class="col-md-12">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">User Id</th>
+              <th scope="col">Photo</th>
               <th scope="col">Pseudo</th>
               <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
+          <ng-container *ngIf="userList">
+             <!-- Si aucun compte n'est présent -->
           <tbody>
-            <tr *ngFor="let user of userAccount">
-              <td>{{user.id}}</td>
+            <tr *ngFor="let user of userList" (click)="goToView(user._id)">
+              <td><img [src]="user.picture" [title]="user.picture" class="thumbnail" /></td>
               <td>{{user.pseudo}}</td>
+              <td>{{user.firstName}}</td>
               <td>{{user.lastName}}</td>
               <td>
-                <button class="btn btn-outline-success rounded-pill" routerLink="/user/user-edit/{{user.id}}">Editer</button>
+                <button class="btn btn-outline-success rounded-pill" routerLink="/user/user-edit/{{user._id}}">Editer</button>
                 <!-- <span class="edit" routerLink="/user-edit/{{user.id}}">Editer</span> -->
                 <!-- <span class="delete" (click)="deleteUserAccount(user.id)">Supprimer</span> -->
                 <button class="btn btn-outline-danger rounded-pill" (click)="deleteUserAccount(user.id)">Supprimer</button>
               </td>
             </tr>
           </tbody>
+          </ng-container>
         </table>
       </div>
   

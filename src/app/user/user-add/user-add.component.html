@@ -4,15 +4,21 @@
       <h3 style="text-align: center">Formulaire d'inscription</h3>
 
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="text-center">
+          <button type="button" class="btn btn-outline-success rounded-pill" data-mdb-ripple-color="dark" type="submit"
+            (clic)="onSubmit()">
+            Envoyer
+          </button>
+
+          <button type="button" class="btn btn-outline-danger rounded-pill" data-mdb-ripple-color="dark"
+            (click)="onReset()" [disabled]="disabledSubmitButton">
+            Annuler
+          </button>
+        </div>
         <div class="form-group">
           <label for="pseudo">Pseudo:</label>
-          <input
-            class="form-control rounded-pill"
-            type="text"
-            placeholder="Entrer votre pseudo"
-            name="pseudo"
-            formControlName="pseudo"
-          />
+          <input class="form-control rounded-pill" type="text" placeholder="Entrer votre pseudo" name="pseudo"
+            formControlName="pseudo" />
           <!-- [ngClass]="{ 'is-invalid': submitted && f.pseudo.errors }" -->
         </div>
 
@@ -28,13 +34,8 @@
 
         <div class="form-group">
           <label for="nom">Nom:</label>
-          <input
-          class="form-control rounded-pill"
-            type="text"
-            placeholder="Entrer votre nom"
-            name="nom"
-            formControlName="firstName"
-          />
+          <input class="form-control rounded-pill" type="text" placeholder="Entrer votre nom" name="nom"
+            formControlName="firstName" />
           <!-- [ngClass]="{ 'is-invalid': submitted && f.pseudo.errors }" -->
         </div>
         <!-- <div
@@ -47,13 +48,8 @@
 
         <div class="form-group">
           <label for="prenom">Prenom:</label>
-          <input
-          class="form-control rounded-pill"
-            type="text"
-            placeholder="Entrer votre prénom"
-            name="prenom"
-            formControlName="lastName"
-          />
+          <input class="form-control rounded-pill" type="text" placeholder="Entrer votre prénom" name="prenom"
+            formControlName="lastName" />
         </div>
         <!-- <div
           *ngIf="f.prenom.invalid && (f.prenom.dirty || f.prenom.touched)"
@@ -68,17 +64,9 @@
         <div class="form-group">
           <label for="email">Email:</label>
           <div class="input-group-prepend">
-            <span class="input-group-text"
-              ><i class="fa fa-envelope" aria-hidden="true"></i
-            ></span>
-            <input
-              required
-              class="form-control rounded-pill"
-              type="text"
-              placeholder="Entrer votre E-mail"
-              name="email"
-              formControlName="email"
-            />
+            <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+            <input required class="form-control rounded-pill" type="text" placeholder="Entrer votre E-mail" name="email"
+              formControlName="email" />
           </div>
         </div>
 
@@ -94,27 +82,16 @@
             <label>Mot de passe</label>
             <div>
               <div class="input-group-append">
-                <input
-                  [type]="fieldTextType ? 'text' : 'password'"
-                  formControlName="password"
-                  class="form-control rounded-pill"
-                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                />
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password"
+                  class="form-control rounded-pill" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <span class="input-group-text">
-                  <i
-                    class="fa"
-                    [ngClass]="{
+                  <i class="fa" [ngClass]="{
                       'fa-eye-slash': !fieldTextType,
                       'fa-eye': fieldTextType
-                    }"
-                    (click)="toggleFieldTextType()"
-                  ></i>
+                    }" (click)="toggleFieldTextType()"></i>
                 </span>
               </div>
-              <div
-                *ngIf="submitted && f.password.errors"
-                class="invalid-feedback"
-              >
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required">
                   Le mot de passe est requis
                 </div>
@@ -129,29 +106,18 @@
             <label>Confirmer votre mot de passe</label>
             <div>
               <div class="input-group-append">
-                <input
-                  [type]="fieldTextType ? 'text' : 'password'"
-                  formControlName="confirmPassword"
-                  class="form-control rounded-pill"
-                  [ngClass]="{
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="confirmPassword"
+                  class="form-control rounded-pill" [ngClass]="{
                     'is-invalid': submitted && f.confirmPassword.errors
-                  }"
-                />
+                  }" />
                 <span class="input-group-text">
-                  <i
-                    class="fa"
-                    [ngClass]="{
+                  <i class="fa" [ngClass]="{
                       'fa-eye-slash': !fieldTextType,
                       'fa-eye': fieldTextType
-                    }"
-                    (click)="toggleFieldTextType()"
-                  ></i>
+                    }" (click)="toggleFieldTextType()"></i>
                 </span>
               </div>
-              <div
-                *ngIf="submitted && f.confirmPassword.errors"
-                class="invalid-feedback"
-              >
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                 <div *ngIf="f.confirmPassword.errors.required">
                   La confirmation de votre mot de passe est requise
                 </div>
@@ -166,36 +132,32 @@
         <div class="formGroup">
           <h3>Adresse</h3>
           <div class="form-group">
-            <label for="rue">Adresse</label>
+            <label for="address">Adresse</label>
             <input class="form-control rounded-pill" type="text" formControlName="address" />
           </div>
           <div class="form-group">
-            <label for="rue">Complément d'adresse</label>
-            <input
-            class="form-control rounded-pill"
-              type="text"
-              formControlName="addressAdd"
-            />
+            <label for="addressAdd">Complément d'adresse</label>
+            <input class="form-control rounded-pill" type="text" formControlName="addressAdd" />
           </div>
           <div class="form-group">
-            <label for="codePostal">Code postal :</label>
+            <label for="zipCode">Code postal :</label>
             <input class="form-control rounded-pill" type="text" formControlName="zipCode" />
           </div>
           <div class="form-group">
-            <label for="ville">Ville:</label>
+            <label for="city">Ville:</label>
             <input class="form-control rounded-pill" type="text" formControlName="city" />
           </div>
           <div class="form-group">
-            <label for="pays">Pays:</label>
+            <label for="country">Pays:</label>
             <input class="form-control rounded-pill" type="text" formControlName="country" />
           </div>
           <div class="form-group">
-            <label for="téléphone">Téléphone:</label>
-            <input class="form-control rounded-pill" type="text" formControlName="phone" />
+            <label for="mobile">Téléphone:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="mobile" />
           </div>
           <div class="form-group">
-            <label for="mobile">Mobile:</label>
-            <input class="form-control rounded-pill" type="text" formControlName="mobile" />
+            <label for="picture">Photo/Image:</label>
+            <input class="form-control rounded-pill" type="text" formControlName="picture" />
           </div>
         </div>
 
@@ -215,29 +177,6 @@
             Accept Ts & Cs is required
           </div>
         </div> -->
-
-        <div class="text-center">
-          <button
-            type="button"
-            class="btn btn-outline-success rounded-pill"
-            data-mdb-ripple-color="dark"
-            type="submit"
-            (clic)="onSubmit()"
-          >
-            Envoyer
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-outline-danger rounded-pill"
-            data-mdb-ripple-color="dark"
-            (click)="onReset()"
-            [disabled]="disabledSubmitButton"
-          >
-            Annuler
-          </button>
-          <br><br>
-        </div>
       </form>
     </div>
   </div>

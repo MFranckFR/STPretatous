@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PretatousService } from 'src/app/service/pretatous.service';
-import { UserAccount } from 'src/app/shared/user-account';
+import { User } from 'src/app/interface/user';
 
 @Component({
   selector: 'app-user-view',
@@ -10,8 +10,8 @@ import { UserAccount } from 'src/app/shared/user-account';
 })
 export class UserViewComponent implements OnInit {
 
-  id!: number;
-  user!: UserAccount;
+  id!: string;
+  user!: User;
 
   constructor(private route: ActivatedRoute,private router: Router, private pretatousService: PretatousService) { }
 
@@ -23,6 +23,10 @@ export class UserViewComponent implements OnInit {
         console.log(data)
         this.user = data;
       });
+  }
+
+  goToEdit(){
+    this.router.navigateByUrl('/user/user-edit/' + this.id);
   }
 
 }
