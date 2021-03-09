@@ -7,9 +7,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductsListAllComponent } from './products-list-all/products-list-all.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { ProductsListAllComponent } from './products-list-all/products-list-all.component';
 import { AngularMaterialModule } from '../angular-material.module';
 
 
@@ -30,8 +31,6 @@ import { AngularMaterialModule } from '../angular-material.module';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     AngularMaterialModule,
-   
-
   ]
 })
 

@@ -4,6 +4,17 @@
       <h3 style="text-align: center">Ajout d'un produit</h3>
 
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+        <div class="text-center">
+          <button [disabled]="disabledSubmitButton" class="btn btn-outline-success rounded-pill" type="submit" (clic)="onSubmit()">
+            Envoyer
+          </button>
+
+          <button class="btn btn-outline-danger rounded-pill" type="reset" (click)="productForm.reset()">
+            Effacer formulaire
+          </button>
+        </div>
+
         <div class="form-group">
           <label for="title">Titre:</label>
           <input
@@ -78,16 +89,7 @@
             usé
           </label>
         </div>
-        <div class="text-center">
-          <button class="btn btn-outline-success rounded-pill" type="submit" (clic)="onSubmit()">
-            Envoyer
-          </button>
-
-          <button class="btn btn-outline-danger rounded-pill" type="reset" (click)="onReset()"
-            [disabled]="disabledSubmitButton">
-            Annuler
-          </button>
-        </div>
+        
         <br>
       </form>
     </div>
