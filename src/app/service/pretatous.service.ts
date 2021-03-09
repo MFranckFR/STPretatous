@@ -126,7 +126,7 @@ export class PretatousService {
   }
 
   //Pour récupérer un compte utilisateur
-  getOneAccount(id:number): Observable<any> {
+  getOneAccount(id:string): Observable<any> {
     let url = `${this.url}/accounts/${id}`;
     return this.http.get(url)
       .pipe(
@@ -138,7 +138,7 @@ export class PretatousService {
   }
 
     //Pour mettre à jour un compte utilisateurs
-    updateUserAccount(id: number, data: Account): Observable<any> {
+    updateUserAccount(id: string, data: Account): Observable<any> {
       let url = `${this.url}/accounts/${id}`;
       return this.http.put(url, data)
       .pipe(
@@ -147,7 +147,7 @@ export class PretatousService {
   }
 
     //Pour effacer un compte utilisateurs
-    deleteUserAccount(id: any){
+    deleteUserAccount(id: string){
       let url = `${this.url}/accounts/${id}`;
       return this.http.delete<Account>(url, this.httpOptions)
       .pipe(
@@ -167,7 +167,7 @@ createProduct(product: any):Observable<any>{
 
 
 //Efface un produit par son id
-deleteProduct(id: any){
+deleteProduct(id: string){
   let url = `${this.url}/products/${id}`;
   return this.http.delete<Product>(url, this.httpOptions)
   .pipe(
@@ -177,7 +177,7 @@ deleteProduct(id: any){
 }
 
 //Récupérer un produit par son id
-getProduct(id:number): Observable<any> {
+getProduct(id:string): Observable<any> {
   let url = `${this.url}/products/${id}`;
   return this.http.get(url)
     .pipe(
@@ -209,7 +209,7 @@ getProducts(limit:number = 0):Observable<any> {
 
 
 
-updateProduct(id: number, data: Product): Observable<any> {
+updateProduct(id: string, data: Product): Observable<any> {
   let url = `${this.url}/products/${id}`;
   console.log('updateProduct', id);
   return this.http.put(url, data)

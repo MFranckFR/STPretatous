@@ -10,13 +10,8 @@
       <br>
       <ul
         class="productImg"
-        *ngFor="let image of product.images; let i = index"
-      >
+        *ngFor="let image of product.images; let i = index">
         <li><img [src]="image" width="25%" heigth="25%" [title]="image" /></li>
         <li><button class="btn btn-outline-success rounded-pill">Emprunter</button></li>
       </ul>
-
-    
-
-      
 </div>

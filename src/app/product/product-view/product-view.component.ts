@@ -10,7 +10,7 @@ import { Product } from 'src/app/shared/product';
 })
 export class ProductViewComponent implements OnInit {
 
-  id!: number;
+  id!: string;
   product!: Product;
 
   constructor(private route: ActivatedRoute,private router: Router, private pretatousService: PretatousService) { }

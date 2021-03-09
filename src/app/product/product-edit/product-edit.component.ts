@@ -9,7 +9,7 @@ import { PretatousService } from 'src/app/service/pretatous.service';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
-  id!: number;
+  id!: string;
   product!: Product;
 
   constructor(

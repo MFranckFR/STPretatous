@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PretatousService } from '../service/pretatous.service';
+import { Product } from 'src/app/shared/product';
 
 @Component({
   selector: 'app-carousel',
@@ -12,6 +14,7 @@ import { PretatousService } from '../service/pretatous.service';
 export class CarouselComponent implements OnInit {
 
   productList : any;
+  product!: Product;
   // productListTemp: any;
   // slides: any = [[]];
 
@@ -45,7 +48,7 @@ export class CarouselComponent implements OnInit {
   //   image:"https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(15).jpg"}]
   // ];  
 
-  constructor(private pretatousService: PretatousService) { }
+  constructor(private pretatousService: PretatousService, private router: Router) { }
 
   chunks(array: any, size: number) {
     let results = [];
@@ -62,6 +65,10 @@ export class CarouselComponent implements OnInit {
         this.productList = this.chunks(data.data, 3);
         console.log('data', data.data);
       });
+    }
+
+    goToProductView(id: string){
+      this.router.navigateByUrl('/product/product-view/' + id);
     }
   }
 
