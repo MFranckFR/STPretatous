@@ -20,11 +20,13 @@ export class PretatousService {
     //Adresse de l'APi à consommer
   url: string = 'http://localhost:3000'
   headers4post!: HttpHeaders;
+  
+  searchOption =[];
+  postData!: Product[];
 
   constructor(private http: HttpClient) { 
     const token_initialize:string = "NGJkNzI5YjRlMGJjMmNmNDgyMTQ3ZTMzYmM4OGVlYmYyNjFhOGE0OGUyYjExYTljZDkwYzU4OGZjYzBjNmY4Ni8vLy8vLzEzMTA=";
     this.headers4post = new HttpHeaders({ 'Content-Type': 'application/json', 'x-tag': token_initialize });
-
   }
 
   httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})}  
@@ -257,7 +259,11 @@ createReturn(returnProduct: any): Observable<any> {
 }
 
 
+///////////////////////////////SEARCH BAR////////////////////////////////
 
+searchBar(): Observable<Product[]>{
+  return this.http.get<Product[]>(this.url);
+}
 
 
 

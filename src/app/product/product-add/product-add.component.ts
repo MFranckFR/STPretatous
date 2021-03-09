@@ -32,9 +32,9 @@ export class ProductAddComponent implements OnInit {
   constructor(private fb: FormBuilder,private pretatousService: PretatousService) {
 
     this.productForm = fb.group({
-      'titre': ['', Validators.required],
+      'title': ['', Validators.required],
       'description': ['', Validators.required],
-      'status': ['', Validators.required],
+      'status': [''],
       'bookingEnabled': [''],
       'image': ''
     });
